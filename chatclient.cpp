@@ -14,7 +14,7 @@ void ChatClient::onReadyRead()
 {
     QByteArray jsonData;
     QDataStream socketStream(m_clientSocket);
-    socketStream.setVersion(QDataStream::Qt_5_12);
+    socketStream.setVersion(QDataStream::Qt_6_7);
     for(;;){
         socketStream.startTransaction();
         socketStream>>jsonData;
@@ -33,7 +33,7 @@ void ChatClient::sendMessage(const QString &text, const QString &type)
         return;
     if(!text.isEmpty()){
         QDataStream serverStream(m_clientSocket);
-        serverStream.setVersion(QDataStream::Qt_5_12);
+        serverStream.setVersion(QDataStream::Qt_6_7);
 
         QJsonObject message;
         message["type"]=type;
